@@ -1,6 +1,6 @@
 # imports
 from flask import Flask, request, make_response
-from flask_sqlalchemy import sql
+from flask_sqlalchemy import sqlalchemy as sql
 
 # initializing Flask app
 app = Flask(__name__)
