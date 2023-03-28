@@ -1,6 +1,6 @@
 # imports
 from flask import Flask, request, make_response
-from flask_sqlalchemy import SQLAlchemy
+from flask_sqlalchemy import sql
 
 # initializing Flask app
 app = Flask(__name__)
@@ -19,7 +19,7 @@ INSTANCE_NAME ="guest-book"
 #app.config["SQLALCHEMY_TRACK_MODIFICATIONS"]= True
 db_string = f"postgres+psycopg2://guest-user:{PASSWORD}@{PUBLIC_IP_ADDRESS}:5432/{DBNAME}"
 
-db = SQLAlchemy(db_string)
+db = sql(db_string)
 
 # User ORM for SQLAlchemy
 class Users(db.Model):
