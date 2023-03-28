@@ -30,7 +30,7 @@ class Users(Base):
 	id = Column(Integer, primary_key = True, nullable = False)
 	guest_name = Column(String(50), nullable = False)
 	content = Column(String(50), nullable = False, unique = True)
-Base.metadata.create_all(engine)
+Base.metadata.create_all(db)
 
 @app.route('/sign', methods =['POST'])
 def add():
