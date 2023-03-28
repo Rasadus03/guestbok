@@ -8,7 +8,7 @@ from sqlalchemy import create_engine
 app = Flask(__name__)
 
 # Google Cloud SQL (change this accordingly)
-PASSWORD ="cGFzc3dvcmQ="
+PASSWORD ="tulip"
 PUBLIC_IP_ADDRESS ="35.204.202.19"
 DBNAME ="guest-book-database"
 PROJECT_ID ="raniamoh-playground"
