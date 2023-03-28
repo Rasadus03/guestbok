@@ -17,7 +17,7 @@ INSTANCE_NAME ="guest-book"
 #app.config["SQLALCHEMY_DATABASE_URI"]= f"mysql + mysqldb://postgres:{PASSWORD}@{PUBLIC_IP_ADDRESS}/{DBNAME}?
 #unix_socket =/cloudsql/{PROJECT_ID}:{INSTANCE_NAME}"
 #app.config["SQLALCHEMY_TRACK_MODIFICATIONS"]= True
-db_string = f"postgres://admin:{PASSWORD}@{PUBLIC_IP_ADDRESS}:15813/{DBNAME}"
+db_string = f"postgres+psycopg2://guest-user:{PASSWORD}@{PUBLIC_IP_ADDRESS}:5432/{DBNAME}"
 
 db = SQLAlchemy(db_string)
 
