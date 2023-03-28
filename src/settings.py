@@ -1,7 +1,2 @@
-
-"""Setting file for the Cloud SQL guestbook"""
-
-CLOUDSQL_INSTANCE = 'ReplaceWithYourInstanceName'
-DATABASE_NAME = 'guestbook'
-USER_NAME = 'ReplaceWithYourDatabaseUserName'
-PASSWORD = 'ReplaceWithYourDatabasePassword'
+from app import db
+db.create_all()
