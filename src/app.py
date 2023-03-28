@@ -32,7 +32,7 @@ class Users(Base):
 	content = Column(String(50), nullable = False, unique = True)
 Base.metadata.create_all(db)
 
-@app.route('/sign', methods =['POST'])
+@app.route('/guestbook/sign', methods =['POST'])
 def add():
 	# getting name and email
 	guest_name = request.form.get('guest_name')
@@ -75,7 +75,7 @@ def add():
 
 		return make_response(responseObject, 403)
 
-@app.route('/view')
+@app.route('/guestbook/view')
 def view():
 	# fetches all the users
 	users = Users.query.all()
