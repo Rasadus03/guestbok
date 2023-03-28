@@ -1,7 +1,9 @@
 # imports
 from flask import Flask, request, make_response
-from flask_sqlalchemy import sqlalchemy as sql
-
+#from flask_sqlalchemy import sqlalchemy as sql
+from sqlalchemy.ext.declarative import declarative_base
+from sqlalchemy import Column, Integer, String, Date
+from sqlalchemy import create_engine
 # initializing Flask app
 app = Flask(__name__)
 
@@ -19,13 +21,15 @@ INSTANCE_NAME ="guest-book"
 #app.config["SQLALCHEMY_TRACK_MODIFICATIONS"]= True
 db_string = f"postgres+psycopg2://guest-user:{PASSWORD}@{PUBLIC_IP_ADDRESS}:5432/{DBNAME}"
 
-db = sql(db_string)
+db = create_engine(db_string)
+Base = declarative_base()
 
 # User ORM for SQLAlchemy
-class Users(db.Model):
+class Users(Base):
 	id = db.Column(db.Integer, primary_key = True, nullable = False)
 	guest_name = db.Column(db.String(50), nullable = False)
 	content = db.Column(db.String(50), nullable = False, unique = True)
+Base.metadata.create_all(engine)
 
 @app.route('/sign', methods =['POST'])
 def add():
