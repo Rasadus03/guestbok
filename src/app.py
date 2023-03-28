@@ -26,9 +26,10 @@ Base = declarative_base()
 
 # User ORM for SQLAlchemy
 class Users(Base):
-	id = db.Column(db.Integer, primary_key = True, nullable = False)
-	guest_name = db.Column(db.String(50), nullable = False)
-	content = db.Column(db.String(50), nullable = False, unique = True)
+	__tablename__ = 'users'
+	id = Column(Integer, primary_key = True, nullable = False)
+	guest_name = Column(String(50), nullable = False)
+	content = Column(String(50), nullable = False, unique = True)
 Base.metadata.create_all(engine)
 
 @app.route('/sign', methods =['POST'])
