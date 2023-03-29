@@ -38,10 +38,9 @@ def add():
 	# getting name and email
 	guest_name = request.form.get('guest_name')
 	content = request.form.get('content')
-
-	# checking if user already exists
-	user = Users.query.filter_by(guest_name = guest_name).first()
-
+  with db.connect() as con:
+  		users =  con.execute(text(f"SELECT * FROM users WHERE guest_name = {guest_name}"))
+  print(users)
 	if not user:
 		try:
 			# creating Users object
