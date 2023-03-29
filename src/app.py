@@ -90,7 +90,7 @@ def view():
 			"content": row["content"]
 		})
 
-	render_template("/home/sa_100437896661729444714/index.html", rows=responseUsers)
+	render_template("index.html", rows=responseUsers)
 
 
 if __name__ == "__main__":
