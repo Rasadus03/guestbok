@@ -44,9 +44,9 @@ def add():
 	print(users.fetchone())
 	row = c.fetchone()
 	if row == None:
-   		print("There are no results for this query")
 		try:
 			# creating Users object
+			print("There are no results for this query")
 			user = Users(
 				guest_name = guest_name,
 				content = content
