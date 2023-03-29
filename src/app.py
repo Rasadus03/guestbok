@@ -85,7 +85,7 @@ def view():
 			"guest_name" : row[1],
 			"content": row[2]
 		})
-
+	print (responseUsers)
 	return render_template("index.html", rows=responseUsers)
 
 
