@@ -54,8 +54,8 @@ def add():
 		with db.connect() as con:
 			 con.execute(text(f"INSERT INTO users (guest_name, content) VALUES ('{guest_name}', '{content}')"))
 		# adding the fields to users table
-		#db.session.add(user)
-		#db.session.commit()
+		db.session.add(user)
+		db.session.commit()
 		# response
 		responseObject = {
 			'status' : 'success',
