@@ -1,5 +1,5 @@
 # imports
-from flask import Flask, request, make_response
+from flask import Flask, request, make_response, render_template
 #from flask_sqlalchemy import sqlalchemy as sql
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy import Column, Integer, String, Date
@@ -77,21 +77,20 @@ def add():
 
 @app.route('/guestbook/view')
 def view():
+	
 	# fetches all the users
-	users = Users.query.all()
-	# response list consisting user details
-	response = list()
+	with engine.connect() as con:
 
-	for user in users:
-		response.append({
-			"guest_name" : user.guest_name,
-			"content": user.content
+	users = con.execute('SELECT * FROM users')
+	responseUsers = list()
+	for row in users:
+		print row
+		responseUsers.append({
+			"guest_name" : row["guest_name"],
+			"content": row["content"]
 		})
 
-	return make_response({
-		'status' : 'success',
-		'message': response
-	}, 200)
+	render_template("index.html", rows=responseUsers)
 
 
 if __name__ == "__main__":
