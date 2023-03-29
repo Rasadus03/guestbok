@@ -80,8 +80,8 @@ def add():
 def view():
 	
 	# fetches all the users
-	async with self.db.connect() as con:
-		users = await con.execute(text("SELECT * FROM users"))
+	 with db.connect() as con:
+		users =  con.execute(text("SELECT * FROM users"))
 	responseUsers = list()
 	for row in users:
 		print (row)
