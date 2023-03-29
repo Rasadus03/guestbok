@@ -12,11 +12,10 @@
 </form>
 <hr>
 {% for row in rows %}
-  <p>{{ row[0]|e }} wrote:
+  <p>{{ row["guest_name"]|e }} wrote:
     <blockquote>
-      {{ row[1]|e }}
+      {{ row["content"]|e }}
     </blockquote>
-    at {{ row[2]|e }}
   </p>
   <hr>
 {% endfor %}
