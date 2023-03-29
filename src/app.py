@@ -61,13 +61,6 @@ def add():
 			}
 
 			return make_response(responseObject, 200)
-		except:
-			responseObject = {
-				'status' : 'fail',
-				'message': 'Some error occurred !!'
-			}
-
-			return make_response(responseObject, 400)
 		
 	else:
 		# if user already exists then send status as fail
