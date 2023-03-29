@@ -50,7 +50,7 @@ def add():
 			guest_name = guest_name,
 			content = content
 		)
-		stmt = (insert(user_table).values(guest_name = guest_name, content = content))
+		stmt = (insert("users").values(guest_name = guest_name, content = content))
 		with db.connect() as con:
 			 con.execute(text(stmt))
 		# adding the fields to users table
