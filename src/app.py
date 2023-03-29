@@ -44,23 +44,22 @@ def add():
 	print(users.fetchone())
 	row = users.fetchone()
 	if row == None:
-		try:
-			# creating Users object
-			print("There are no results for this query")
-			user = Users(
-				guest_name = guest_name,
-				content = content
-			)
-			# adding the fields to users table
-			db.session.add(user)
-			db.session.commit()
-			# response
-			responseObject = {
-				'status' : 'success',
-				'message': 'Successfully registered.'
-			}
+		# creating Users object
+		print("There are no results for this query")
+		user = Users(
+			guest_name = guest_name,
+			content = content
+		)
+		# adding the fields to users table
+		db.session.add(user)
+		db.session.commit()
+		# response
+		responseObject = {
+			'status' : 'success',
+			'message': 'Successfully registered.'
+		}
 
-			return make_response(responseObject, 200)
+		return make_response(responseObject, 200)
 		
 	else:
 		# if user already exists then send status as fail
