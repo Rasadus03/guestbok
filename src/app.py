@@ -1,5 +1,5 @@
 # imports
-from flask import Flask, request, make_response, render_template
+from flask import Flask, request, make_response, render_template,redirect, url_for
 from sqlalchemy import text
 #from flask_sqlalchemy import sqlalchemy as sql
 from sqlalchemy.ext.declarative import declarative_base
@@ -62,7 +62,7 @@ def add():
 			'message': 'Successfully registered.'
 		}
 
-		self.redirect('/guestbook/view')
+		rreturn redirect(url_for('guestbook/view'))
 		
 	else:
 		# if user already exists then send status as fail
