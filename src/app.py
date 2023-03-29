@@ -41,9 +41,10 @@ def add():
 	with db.connect() as con:
 		users =  con.execute(text(f"SELECT * FROM users WHERE guest_name = '{guest_name}'"))
   
-	print(users.len())
-	
-	if not users:
+	print(users.fetchone())
+	row = c.fetchone()
+	if row == None:
+   		print("There are no results for this query")
 		try:
 			# creating Users object
 			user = Users(
