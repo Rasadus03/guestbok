@@ -83,7 +83,7 @@ def view():
 		users = con.execute('SELECT * FROM users')
 	responseUsers = list()
 	for row in users:
-		print row
+		print (row)
 		responseUsers.append({
 			"guest_name" : row["guest_name"],
 			"content": row["content"]
