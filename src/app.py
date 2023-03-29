@@ -82,8 +82,8 @@ def view():
 	for row in users:
 		print (row)
 		responseUsers.append({
-			"guest_name" : row["guest_name"],
-			"content": row["content"]
+			"guest_name" : row[1],
+			"content": row[2]
 		})
 
 	return render_template("index.html", rows=responseUsers)
