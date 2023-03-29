@@ -1,5 +1,6 @@
 # imports
 from flask import Flask, request, make_response, render_template
+from sqlalchemy import text
 #from flask_sqlalchemy import sqlalchemy as sql
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy import Column, Integer, String, Date
@@ -80,7 +81,7 @@ def view():
 	
 	# fetches all the users
 	with db.connect() as con:
-		users = con.execute('SELECT * FROM users')
+		users = await con.execute(text("SELECT * FROM users"))
 	responseUsers = list()
 	for row in users:
 		print (row)
