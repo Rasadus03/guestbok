@@ -3,7 +3,7 @@ from flask import Flask, request, make_response, render_template
 from sqlalchemy import text
 #from flask_sqlalchemy import sqlalchemy as sql
 from sqlalchemy.ext.declarative import declarative_base
-from sqlalchemy import Column, Integer, String, Date
+from sqlalchemy import Column, Integer, String, Date, insert
 from sqlalchemy import create_engine
 # initializing Flask app
 app = Flask(__name__)
@@ -28,7 +28,7 @@ Base = declarative_base()
 # User ORM for SQLAlchemy
 class Users(Base):
 	__tablename__ = 'users'
-	id = Column(Integer, primary_key = True, nullable = False)
+	id = Column(Integer, primary_key = True, nullable = False, autoincrement=True)
 	guest_name = Column(String(50), nullable = False)
 	content = Column(String(50), nullable = False, unique = True)
 Base.metadata.create_all(db)
@@ -50,6 +50,9 @@ def add():
 			guest_name = guest_name,
 			content = content
 		)
+		stmt = (insert(user_table).values(guest_name = guest_name, content = content))
+		with db.connect() as con:
+			 con.execute(text(stmt))
 		# adding the fields to users table
 		db.session.add(user)
 		db.session.commit()
