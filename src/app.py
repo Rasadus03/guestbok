@@ -40,7 +40,7 @@ def add():
 	content = request.form.get('content')
 	with db.connect() as con:
 		users =  con.execute(text(f"SELECT * FROM users WHERE guest_name = {guest_name}"))
-  	print(users)
+  print(users)
 	if not users:
 		try:
 			# creating Users object
