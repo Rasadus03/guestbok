@@ -38,8 +38,8 @@ def add():
 	# getting name and email
 	guest_name = request.form.get('guest_name')
 	content = request.form.get('content')
-  with db.connect() as con:
-    users =  con.execute(text(f"SELECT * FROM users WHERE guest_name = {guest_name}"))
+	with db.connect() as con:
+		users =  con.execute(text(f"SELECT * FROM users WHERE guest_name = {guest_name}"))
   print(users)
 	if not user:
 		try:
