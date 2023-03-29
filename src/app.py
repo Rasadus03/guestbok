@@ -41,7 +41,7 @@ def add():
 	with db.connect() as con:
 		users =  con.execute(text(f"SELECT * FROM users WHERE guest_name = '{guest_name}'"))
   
-	print(users)
+	print(users.len())
 	
 	if not users:
 		try:
