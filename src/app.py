@@ -80,8 +80,7 @@ def view():
 	
 	# fetches all the users
 	with engine.connect() as con:
-
-	users = con.execute('SELECT * FROM users')
+		users = con.execute('SELECT * FROM users')
 	responseUsers = list()
 	for row in users:
 		print row
