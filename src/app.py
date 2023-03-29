@@ -62,7 +62,7 @@ def add():
 			'message': 'Successfully registered.'
 		}
 
-		rreturn redirect(url_for('guestbook/view'))
+		return redirect(url_for('guestbook/view'))
 		
 	else:
 		# if user already exists then send status as fail
