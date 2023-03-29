@@ -62,7 +62,7 @@ def add():
 			'message': 'Successfully registered.'
 		}
 
-		return make_response(responseObject, 200)
+		self.redirect('/guestbook/view')
 		
 	else:
 		# if user already exists then send status as fail
