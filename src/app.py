@@ -42,7 +42,7 @@ def add():
 		users =  con.execute(text(f"SELECT * FROM users WHERE guest_name = '{guest_name}'"))
   
 	print(users.fetchone())
-	row = c.fetchone()
+	row = users.fetchone()
 	if row == None:
 		try:
 			# creating Users object
