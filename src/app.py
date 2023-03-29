@@ -80,7 +80,7 @@ def add():
 def view():
 	
 	# fetches all the users
-	 with db.connect() as con:
+	with db.connect() as con:
 		users =  con.execute(text("SELECT * FROM users"))
 	responseUsers = list()
 	for row in users:
